@@ -22,14 +22,48 @@ namespace SMS.WebApp.Core.Repositories
 
         }
        
-        public Task<DataResult> Login(LoginViewModel model)
+        public async Task<DataResult> LoginAsync(LoginViewModel model)
         {
-            throw new NotImplementedException();
+            DataResult result = new DataResult();
+            var response = await _signInManager.PasswordSignInAsync(model.Email,model.Password,false,false) ;
+            if(response.Succeeded)
+            {
+                result.Success = true;
+                result.Message = "User Login success";
+            }
+            else
+            {
+                result.Success = false;
+                result.Message = "User Login Failed";
+            }
+            return result; 
         }
 
-        public Task<DataResult> Register(RegisterViewModel model)
+        public async Task<DataResult> RegisterAsync(RegisterViewModel model)
         {
-            throw new NotImplementedException();
+            DataResult result = new DataResult();
+            var user = new IdentityUser
+            {
+                UserName = model.UserName,
+                Email = model.Email,
+            };
+
+            var response = await _userManager.CreateAsync(user, model.Password);
+            if (response.Succeeded)
+            {
+                
+                result.Success = true;
+                result.Message = "User Registration success";
+                //is persistent means remenber me password
+                await _signInManager.SignInAsync(user, isPersistent: false);
+            }
+            else
+            {
+                result.Success = false;
+                result.Message = "User Registration Failed";
+            }
+            return result;
+           
         }
     }
 }
