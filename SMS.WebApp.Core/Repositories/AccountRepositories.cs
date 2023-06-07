@@ -22,7 +22,7 @@ namespace SMS.WebApp.Core.Repositories
 
         }
        
-        public async Task<DataResult> Login(LoginViewModel model)
+        public async Task<DataResult> LoginAsync(LoginViewModel model)
         {
             DataResult result = new DataResult();
             var response = await _signInManager.PasswordSignInAsync(model.Email,model.Password,false,false) ;
@@ -39,7 +39,7 @@ namespace SMS.WebApp.Core.Repositories
             return result; 
         }
 
-        public async Task<DataResult> Register(RegisterViewModel model)
+        public async Task<DataResult> RegisterAsync(RegisterViewModel model)
         {
             DataResult result = new DataResult();
             var user = new IdentityUser
