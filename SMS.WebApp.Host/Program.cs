@@ -1,6 +1,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using SMS.WebApp.Core.IRepositories;
+using SMS.WebApp.Core.Repositories;
 using SMS.WebApp.Data;
+using SMS.WebApp.Services.Interfaces;
+using SMS.WebApp.Services.Services;
 
 namespace SMS.WebApp.Host
 {
@@ -16,7 +20,8 @@ namespace SMS.WebApp.Host
             builder.Services.AddDbContext<SMSDbContext>(options =>
                 options.UseSqlServer(connectionString));
             builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<SMSDbContext>().AddDefaultTokenProviders();
-
+            builder.Services.AddTransient<IAccountRepositories,AccountRepositories>();
+            builder.Services.AddTransient<IAccountServices,AccountServices>();
 
             var app = builder.Build();
 
@@ -32,6 +37,7 @@ namespace SMS.WebApp.Host
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
