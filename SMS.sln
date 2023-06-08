@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMS.WebApp.Data", "SMS.WebA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMS.WebApp.Core", "SMS.WebApp.Core\SMS.WebApp.Core.csproj", "{195777C7-12F9-44A5-A03A-617BC7EF0FBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS.WebApp.Services", "SMS.WebApp.Services\SMS.WebApp.Services.csproj", "{9464C90F-A0A1-4CC9-817F-8C9642209DA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMS.WebApp.Services", "SMS.WebApp.Services\SMS.WebApp.Services.csproj", "{9464C90F-A0A1-4CC9-817F-8C9642209DA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
