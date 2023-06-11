@@ -1,0 +1,49 @@
+﻿@page
+@model SMS.WebApp.Host.Pages.Account.RegisterModel
+@{
+}
+
+@*<link rel="stylesheet" href="../wwwroot/css/site.css">*@
+<div  class="demo">
+    <form method="post" asp-page="Register" style="width: 22rem;" >
+
+        <!-- Username input -->
+        <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example1">User Name</label>
+            <input type="text" id="form2Example1" asp-for="@Model.Account.UserName" class="form-control" />
+            @Html.ValidationMessageFor(m => Model.Account.UserName,"",new {@class="text-danger"})
+        </div>
+
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example1">Email address</label>
+            <input type="email" id="form2Example1" asp-for="@Model.Account.Email" class="form-control" />
+            @Html.ValidationMessageFor(m => Model.Account.Email,"",new {@class="text-danger"})
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+            <label class="form-label" for="Password">Password</label>
+            <input type="password" id="form2Example2" asp-for="@Model.Account.Password" class="form-control" />
+            @Html.ValidationMessageFor(m => Model.Account.Password,"",new {@class="text-danger"})
+        </div>
+
+        <div class="form-outline mb-4">
+            <label class="form-label" for="ConfirmPassword">ConfirmPassword</label>
+            <input type="password" id="form2Example2" asp-for="@Model.Account.ConfirmPassword" class="form-control" />
+            @Html.ValidationMessageFor(m => Model.Account.ConfirmPassword,"",new {@class="text-danger"})
+        </div>
+
+       
+
+        <!-- Submit button -->
+       
+        <input type="submit" class="btn btn-primary btn-block mb-4" />
+
+        <!-- Register buttons -->
+        <div class="text-center">
+            <p>Not a member? <a class="nav-link text-dark" asp-area="" asp-page="Account/SignIn">SignIn</a></p>
+        </div>
+    </form>
+</div>
+

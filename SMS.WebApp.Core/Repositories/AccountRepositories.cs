@@ -46,6 +46,7 @@ namespace SMS.WebApp.Core.Repositories
             {
                 UserName = model.UserName,
                 Email = model.Email,
+               
             };
 
             var response = await _userManager.CreateAsync(user, model.Password);
