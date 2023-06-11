@@ -2,28 +2,32 @@
 @model SMS.WebApp.Host.Pages.SignInModel
 @{
 }
+@*<link rel="stylesheet" href="../wwwroot/css/site.css">*@
 
-<div class="">
+
+<div class="demo">
     <form method="post" asp-page="SignIn" style="width: 22rem;">
         <!-- Email input -->
         <div class="form-outline mb-4">
             <label class="form-label" for="form2Example1">Email address</label>
             <input type="email" id="form2Example1" asp-for="@Model.Account.Email"  class="form-control" />
+            @Html.ValidationMessageFor(m => Model.Account.Email,"",new {@class="text-danger"})
         </div>
 
         <!-- Password input -->
         <div class="form-outline mb-4">
             <label class="form-label" for="form2Example2">Password</label>
             <input type="password" id="form2Example2" asp-for="@Model.Account.Password" class="form-control" />
+            @Html.ValidationMessageFor(m => Model.Account.Password,"",new {@class="text-danger"})
         </div>
 
         <!-- Submit button -->
-        <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
+        
         <input type="submit" class="btn btn-primary btn-block mb-4"/>
 
         <!-- Register buttons -->
         <div class="text-center">
-            <p>Not a member? <a href="#!">Register</a></p>
+            <p>Not a member? <a class="nav-link text-dark" asp-area="" asp-page="/Account/Register">Registers</a></p>
         </div>
     </form>
 </div>

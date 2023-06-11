@@ -3,15 +3,15 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using SMS.WebApp.Data.Models.ViewModels;
 using SMS.WebApp.Services.Interfaces;
 
-namespace SMS.WebApp.Host.Pages
+namespace SMS.WebApp.Host.Pages.Account
 {
-    public class SignInModel : PageModel
+    public class RegisterModel : PageModel
     {
         [BindProperty]
-        public LoginViewModel Account { get; set; }
+        public RegisterViewModel Account { get; set; }
 
         private readonly IAccountServices _services;
-        public SignInModel(IAccountServices services)
+        public RegisterModel(IAccountServices services)
         {
             _services = services;
         }
@@ -19,19 +19,23 @@ namespace SMS.WebApp.Host.Pages
         {
 
         }
+
         public async Task<IActionResult> OnPost()
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
-                var result =await _services.LoginAsync(this.Account);
+                var result = await _services.RegisterAsync(this.Account);
                 if (result.Success)
                 {
-                    return RedirectToPage("./Index");
+                    return RedirectToPage("/Account/SignIn");
                 }
-                
-            }
+                else
+                    return Page();
 
+            }
+            
             return Page();
+
         }
     }
 }
