@@ -13,6 +13,7 @@ namespace SMS.WebApp.Services.Interfaces
          Task<DataResult> LoginAsync(LoginViewModel model);
        
         Task<DataResult> RegisterAsync(RegisterViewModel model);
-       
+        Task SignOutAsync();
+
     }
 }

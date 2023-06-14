@@ -17,6 +17,7 @@ namespace SMS.WebApp.Host.Pages.Account
         }
         public void OnGet()
         {
+            
 
         }
 
@@ -24,9 +25,11 @@ namespace SMS.WebApp.Host.Pages.Account
         {
             if(ModelState.IsValid)
             {
+               
                 var result = await _services.RegisterAsync(this.Account);
                 if (result.Success)
                 {
+                   
                     return RedirectToPage("/Account/SignIn");
                 }
                 else

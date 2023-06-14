@@ -14,6 +14,8 @@ namespace SMS.WebApp.Data.Models.ViewModels
         [Display(Name ="Email")]
         public string Email { get; set; }
 
+       
+
 
         [Required]
         [StringLength(100,ErrorMessage ="The {0} must be at least {2} and at max {1} charecter long",MinimumLength =6)]

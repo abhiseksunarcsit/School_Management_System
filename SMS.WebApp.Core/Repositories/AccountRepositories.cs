@@ -25,7 +25,8 @@ namespace SMS.WebApp.Core.Repositories
         public async Task<DataResult> LoginAsync(LoginViewModel model)
         {
             DataResult result = new DataResult();
-            var response = await _signInManager.PasswordSignInAsync(model.Email,model.Password,false,false) ;
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            var response = await _signInManager.PasswordSignInAsync(user.UserName,model.Password,false,false) ;
             if(response.Succeeded)
             {
                 result.Success = true;
@@ -64,6 +65,14 @@ namespace SMS.WebApp.Core.Repositories
                 result.Message = "User Registration Failed";
             }
             return result;
+           
+        }
+
+        public async Task SignOutAsync()
+        {
+             await _signInManager.SignOutAsync();
+            
+
            
         }
     }
