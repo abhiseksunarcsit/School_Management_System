@@ -1,6 +1,17 @@
 ﻿@page
 @model SMS.WebApp.Host.Pages.Account.RegisterModel
 @{
+    @if (User.Identity.IsAuthenticated)
+    {
+       //use default layout
+
+    }
+    else
+    {
+        Layout = "_AddLayout";
+        RedirectToPage("./Account/SignIn");
+       // RedirectToPage("Sign");
+    }
 }
 
 @*<link rel="stylesheet" href="../wwwroot/css/site.css">*@
@@ -42,7 +53,7 @@
 
         <!-- Register buttons -->
         <div class="text-center">
-            <p>Not a member? <a class="nav-link text-dark" asp-area="" asp-page="Account/SignIn">SignIn</a></p>
+            <p>Not a member? <a class="nav-link text-dark" asp-area="" asp-page="/Account/SignIn">SignIn</a></p>
         </div>
     </form>
 </div>

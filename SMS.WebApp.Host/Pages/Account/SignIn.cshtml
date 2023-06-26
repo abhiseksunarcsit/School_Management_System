@@ -1,6 +1,15 @@
 ﻿@page
 @model SMS.WebApp.Host.Pages.SignInModel
 @{
+    @if (User.Identity.IsAuthenticated)
+    {
+
+    }
+    else
+    {
+        Layout = "_AddLayout";
+        RedirectToPage("/Account/SignIn");
+    }
 }
 @*<link rel="stylesheet" href="../wwwroot/css/site.css">*@
 

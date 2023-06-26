@@ -14,7 +14,9 @@ namespace SMS.WebApp.Core.IRepositories
        
         Task<DataResult> LoginAsync(LoginViewModel model);
         Task<DataResult> RegisterAsync(RegisterViewModel model);
-        
+        Task SignOutAsync();
+
+
 
     }
 }

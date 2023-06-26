@@ -1,10 +1,23 @@
 ﻿@page
 @model IndexModel
 @{
+    @if (User.Identity.IsAuthenticated)
+    {
+        //use default layout
+    }
+    else
+    {
+        Layout = "_AddLayout";
+        RedirectToPage("/Account/SignIn");
+    }
     ViewData["Title"] = "Home page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
+
+    <a class="btn btn-success" asp-area="" asp-page="/Students/Index" role="button">Student System</a>
+
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+

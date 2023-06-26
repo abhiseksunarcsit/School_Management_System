@@ -12,9 +12,14 @@ namespace SMS.WebApp.Host.Pages
             _logger = logger;
         }
 
-        public void OnGet()
+        public async Task<IActionResult> OnGet()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return  Page();
 
+            }else
+                return RedirectToPage("/Account/SignIn");
         }
     }
 }

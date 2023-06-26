@@ -11,4 +11,12 @@ namespace SMS.WebApp.Data.Healper
         public bool Success { get; set; }
         public string Message { get; set; }
     }
+
+    public class DataResult<T>
+    {
+        public bool Success { get; set; }
+        public string Message { get; set; }
+
+        public List<T> Data { get; set; }
+    }
 }
