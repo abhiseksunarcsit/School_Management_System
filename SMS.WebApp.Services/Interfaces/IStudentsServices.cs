@@ -1,5 +1,6 @@
 ﻿using SMS.WebApp.Data.Healper;
-using SMS.WebApp.Data.Models.DataModels;
+using SMS.WebApp.Data.Models.Emums;
+using SMS.WebApp.Data.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,11 @@ namespace SMS.WebApp.Services.Interfaces
 {
     public interface IStudentsServices
     {
-        Task<DataResult> CreateStudents(Students studentArgs);
-        Task<DataResult> UpdateStudents(Students StudentArgs);
+        Task<DataResult> CreateStudents(StudentViewModel studentArgs);
+        Task<DataResult> UpdateStudents(StudentViewModel StudentArgs);
         Task<DataResult> DeleteStudents(Guid studentId);
-        Task<DataResult<Students>> GetAllStudents();
+        Task<DataResult<StudentViewModel>> GetAllStudents();
+        Task<DataResult<GenderEnums>> GetGenderList();
+        Task<DataResult<StudentViewModel>> GetStudentbyId(Guid studentId);
     }
 }

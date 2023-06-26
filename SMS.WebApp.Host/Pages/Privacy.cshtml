@@ -2,6 +2,15 @@
 @model PrivacyModel
 @{
     ViewData["Title"] = "Privacy Policy";
+    @if (User.Identity.IsAuthenticated)
+    {
+        //use default layout
+    }
+    else
+    {
+        Layout = "_AddLayout";
+        RedirectToPage("./Account/SignIn");
+    }
 }
 <h1>@ViewData["Title"]</h1>
 

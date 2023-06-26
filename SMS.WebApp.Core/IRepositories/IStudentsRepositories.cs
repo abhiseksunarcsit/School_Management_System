@@ -14,5 +14,6 @@ namespace SMS.WebApp.Core.IRepositories
         Task<DataResult> UpdateStudents(Students StudentArgs);
         Task<DataResult> DeleteStudents(Guid  studentId);
         Task<DataResult<Students>> GetAllStudents();
+        Task<DataResult<Students>> GetStudentbyId(Guid studentId);
     }
 }

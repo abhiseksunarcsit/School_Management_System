@@ -70,7 +70,7 @@ namespace SMS.WebApp.Core.Repositories
             {
                 //var re = _context.Students.Select(s => s.DOB);
                 //re.Where(w => w.Year > 2010);
-                result.Data = await _context.Students.ToListAsync();
+                result.Data = await _context.Students.Where(w=>w.IsDeleted==false).ToListAsync();
                 result.Success= true;
                 result.Message = "Get Students";
 
@@ -80,6 +80,26 @@ namespace SMS.WebApp.Core.Repositories
                 result.Message = ex.Message;
             }
             return result;
+        }
+
+        public async Task<DataResult<Students>> GetStudentbyId(Guid studentId)
+        {
+            DataResult<Students> result= new DataResult<Students>();
+            try
+            {
+                result.Data = await _context.Students.Where(w=>w.Id == studentId).ToListAsync();
+                result.Success= true;
+                result.Message = "Get Student by Id Success";
+
+            }
+            catch(Exception ex)
+            {
+                result.Success = false;
+                result.Message = ex.Message;
+
+            }
+            return result;
+
         }
 
         public async Task<DataResult> UpdateStudents(Students StudentArgs)
@@ -103,5 +123,6 @@ namespace SMS.WebApp.Core.Repositories
             }
             return result;
         }
+      
     }
 }

@@ -256,10 +256,9 @@ namespace SMS.WebApp.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdateUserName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("gender")

@@ -10,12 +10,14 @@ namespace SMS.WebApp.Data.Models.ViewModels
 {
     public class StudentViewModel
     {
+        public Guid  StudentId { get; set; }
+        public string ? UserName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
         public DateTime DOB { get; set; }
         public GenderEnums Gender { get; set; }
         public string GradeLevel { get; set; }
-        public String PhoneNumber{ get; set; }
+        public string PhoneNumber{ get; set; }
     }
 }
